@@ -1,0 +1,45 @@
+{% extends 'ADMIN/admin_home_index.html'%}
+{% block body %}
+<form id="form1" name="form1" method="post" action="/View_meter_reader_post/#about">
+    {% csrf_token %}
+  <table class="pull-left" >
+    <tr>
+      <td>
+        <input type="text" name="textfield" id="textfield" class="form-control"  /></td>
+      <td><input type="submit" name="button" id="button" class="btn btn-success" value="Search" class="form-control" /></td>
+    </tr>
+  </table><br><br>
+  <table width="759" height="165" border="1"  class="table table-bordered table-hover" >
+    <tr>
+      <th>S.No</th>
+      <th>Name</th>
+      <th>Photo</th>
+      <th>Gender</th>
+      <th width="80px">DOB</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>District</th>
+      <th>Place</th>
+      <th>Pincode</th>
+      <th>&nbsp;</th>
+      <th>&nbsp;</th>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td width="50px">&nbsp;{{ forloop.counter }}</td>
+        <td>&nbsp;{{ i.Name }}</td>
+        <td>&nbsp;<img src="{{ i.Photo }}" width="100px"height="100px"/></td>
+        <td>&nbsp;{{ i.Gender }}</td>
+        <td>&nbsp;{{ i.Dob }}</td>
+        <td>&nbsp;{{ i.Phone }}</td>
+        <td>&nbsp;{{ i.Email }}</td>
+        <td>&nbsp;{{ i.District }}</td>
+        <td>&nbsp;{{ i.Place }}</td>
+        <td>&nbsp;{{ i.Pincode }}</td>
+        <td width="50px"><a href="/edit_meter_reader/{{ i.id }}"class="btn btn-outline-success">Edit</a></td>
+      <td width="50px"><a href="/delete_meter_reader/{{ i.LOGIN.id }}"onclick="return confirm('Are You Sure')"class="btn btn-outline-danger">Delete</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+{% endblock %}

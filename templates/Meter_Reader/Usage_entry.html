@@ -1,0 +1,26 @@
+{% extends 'Meter_Reader/reader_home_index.html'%}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/Usage_entry_post/#tab">
+    {% csrf_token %}
+
+    <input type="hidden" name="id3" value="{{ id }}">
+
+
+  <table class="table table-bordered table-hover">
+      <tr>
+      <td>Usage</td>
+      <td>
+      <input class="form-control" type="text" name="textfield" id="textfield" pattern="[0-9]+" required/></td>
+    </tr>
+    <tr>
+      <td colspan="2"><div align="center">
+        <input class="btn btn-success" type="submit" name="button" id="button" value="Submit" />
+      </div>        <div align="center"></div></td>
+    </tr>
+  </table>
+</form>
+{% endblock %}
+
+
